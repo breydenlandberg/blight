@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm1eoykka2o2g"]
+
+[ext_resource type="Theme" uid="uid://c5y1ghgoypah4" path="res://ui/theme.tres" id="1_1dyqp"]
+[ext_resource type="Script" path="res://ui/activity_log/blinking.gd" id="1_3o81q"]
+[ext_resource type="Script" path="res://ui/activity_log/scroll_container.gd" id="2_orxe0"]
+[ext_resource type="Script" path="res://ui/speech.gd" id="4_1f5oq"]
+
+[node name="UIManager" type="CanvasLayer"]
+
+[node name="MasterContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ComputerSays" type="Node2D" parent="MasterContainer"]
+
+[node name="Panel" type="Panel" parent="MasterContainer/ComputerSays"]
+offset_left = 951.0
+offset_right = 1920.0
+offset_bottom = 180.0
+theme = ExtResource("1_1dyqp")
+
+[node name="OuterContainer" type="MarginContainer" parent="MasterContainer/ComputerSays"]
+offset_left = 951.0
+offset_right = 1920.0
+offset_bottom = 180.0
+theme = ExtResource("1_1dyqp")
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="InnerContainer" type="HBoxContainer" parent="MasterContainer/ComputerSays/OuterContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="OuterDescriptionContainer" type="HBoxContainer" parent="MasterContainer/ComputerSays/OuterContainer/InnerContainer"]
+custom_minimum_size = Vector2(265, 0)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="DescriptionContainer" type="HBoxContainer" parent="MasterContainer/ComputerSays/OuterContainer/InnerContainer/OuterDescriptionContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="MasterContainer/ComputerSays/OuterContainer/InnerContainer/OuterDescriptionContainer/DescriptionContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.65098, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Computer says"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Blinking" type="Label" parent="MasterContainer/ComputerSays/OuterContainer/InnerContainer/OuterDescriptionContainer/DescriptionContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.65098, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_3o81q")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MasterContainer/ComputerSays/OuterContainer/InnerContainer"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+script = ExtResource("2_orxe0")
+
+[node name="Activity" type="Label" parent="MasterContainer/ComputerSays/OuterContainer/InnerContainer/ScrollContainer"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Speech" type="Node2D" parent="MasterContainer"]
+visible = false
+position = Vector2(0, 810)
+script = ExtResource("4_1f5oq")
+
+[node name="Panel" type="Panel" parent="MasterContainer/Speech"]
+custom_minimum_size = Vector2(1820, 220)
+offset_left = 50.0
+offset_right = 1870.0
+offset_bottom = 220.0
+theme = ExtResource("1_1dyqp")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MasterContainer/Speech"]
+custom_minimum_size = Vector2(1820, 220)
+offset_left = 50.0
+offset_right = 1870.0
+offset_bottom = 220.0
+theme = ExtResource("1_1dyqp")
+
+[node name="MarginContainer" type="MarginContainer" parent="MasterContainer/Speech/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="SpeechText" type="Label" parent="MasterContainer/Speech/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="SpeechTimer" type="Timer" parent="MasterContainer/Speech"]
+wait_time = 5.0
+
+[connection signal="timeout" from="MasterContainer/Speech/SpeechTimer" to="MasterContainer/Speech" method="_on_speech_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c5y1ghgoypah4"]
+
+[ext_resource type="FontFile" uid="uid://41s0fbftyiyj" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="1_kihoh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3or2"]
+bg_color = Color(0.0862745, 0.0392157, 0, 1)
+corner_radius_bottom_left = 48
+shadow_color = Color(1, 0.65098, 0, 0.196078)
+shadow_size = 15
+
+[resource]
+Label/colors/font_color = Color(0, 1, 0.65098, 1)
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_kihoh")
+Panel/styles/panel = SubResource("StyleBoxFlat_g3or2")

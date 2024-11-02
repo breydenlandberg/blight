@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=3 uid="uid://ds51rb302ldjx"]
+
+[ext_resource type="Script" path="res://enemies/bat/bat.gd" id="1_fex0k"]
+[ext_resource type="Texture2D" uid="uid://c1gdaykeb4omv" path="res://enemies/bat/assets/Bat-IdleFly.png" id="2_36aad"]
+[ext_resource type="Script" path="res://enemies/bat/state_machine/bat_state_machine.gd" id="2_afu81"]
+[ext_resource type="Script" path="res://enemies/bat/state_machine/states/attack.gd" id="3_cjpp8"]
+[ext_resource type="Script" path="res://enemies/bat/state_machine/states/idle.gd" id="4_f25jj"]
+[ext_resource type="Script" path="res://enemies/bat/state_machine/states/wander.gd" id="5_5327t"]
+
+[sub_resource type="Animation" id="Animation_o5y6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_36aad")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q5aa4"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 0.0003),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_36aad"), null, null, ExtResource("2_36aad")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555555, 0.666666, 0.777777, 0.888888),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ange"]
+_data = {
+"RESET": SubResource("Animation_o5y6i"),
+"idle": SubResource("Animation_q5aa4")
+}
+
+[node name="Bat" type="CharacterBody2D"]
+script = ExtResource("1_fex0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_36aad")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8ange")
+}
+
+[node name="BatStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("animation", "entity", "initial_state")]
+script = ExtResource("2_afu81")
+animation = NodePath("../AnimationPlayer")
+entity = NodePath("..")
+initial_state = NodePath("Idle")
+
+[node name="Attack" type="Node2D" parent="BatStateMachine"]
+script = ExtResource("3_cjpp8")
+
+[node name="Idle" type="Node2D" parent="BatStateMachine"]
+script = ExtResource("4_f25jj")
+
+[node name="Wander" type="Node2D" parent="BatStateMachine"]
+script = ExtResource("5_5327t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

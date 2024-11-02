@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvn5s1emeowj4"]
+
+[ext_resource type="Script" path="res://platforms/forest/forest_platform.gd" id="1_dxw8w"]
+[ext_resource type="Texture2D" uid="uid://njngfvo71d8w" path="res://assets/tilesets/env_mon.png" id="2_hljn0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aomt7"]
+size = Vector2(174, 14)
+
+[node name="ForestPlatform" type="AnimatableBody2D"]
+z_index = 40
+script = ExtResource("1_dxw8w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hljn0")
+region_enabled = true
+region_rect = Rect2(80, 80, 175, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aomt7")
