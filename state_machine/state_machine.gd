@@ -68,8 +68,8 @@ func transition(state, new_state_name):
 		return
 
 	if current_state:
-		current_state.previous_state = null
 		current_state.exit()
+		current_state.previous_state = null
 
 	new_state.previous_state = current_state
 	new_state.enter()

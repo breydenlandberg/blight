@@ -19,7 +19,7 @@ func _ready():
 	SignalBus._speech.connect(speech)
 	update_interactions()
 
-func _physics_process(delta: float):
+func _physics_process(delta):
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
