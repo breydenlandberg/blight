@@ -274,6 +274,7 @@ height = 28.0
 radius = 36.0
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 20
 collision_layer = 2
 script = ExtResource("1_6vroc")
 

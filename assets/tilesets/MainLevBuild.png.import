@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg6vdhjfkxscy"
-path="res://.godot/imported/env_rock.png-fa6c3692e17af39eaab74992ea9a83ef.ctex"
+uid="uid://3dt2n7o1sq8j"
+path="res://.godot/imported/MainLevBuild.png-e5de4cfdef4bdf2bece6f9c07eb9794a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/env_rock.png"
-dest_files=["res://.godot/imported/env_rock.png-fa6c3692e17af39eaab74992ea9a83ef.ctex"]
+source_file="res://assets/tilesets/MainLevBuild.png"
+dest_files=["res://.godot/imported/MainLevBuild.png-e5de4cfdef4bdf2bece6f9c07eb9794a.ctex"]
 
 [params]
 
