@@ -25,6 +25,9 @@ func state_input(event: InputEvent):
 			SignalBus._computer_says.emit('attack_basic')
 
 func state_physics_process(delta):
+	if attack_animation.current_animation != 'attack_basic' and attack_animation.current_animation != 'attack_basic_flip_h':
+		entity.is_attacking = false
+
 	if entity.is_on_floor():
 		if playerCanPlayDefaultAnim():
 			if entity.velocity.length() > 0:
@@ -38,6 +41,7 @@ func state_physics_process(delta):
 #
 # Ground state specific functions
 func attack(attack_type: String):
+	entity.is_attacking = true
 	animation.play(attack_type)
 
 	if sprite.flip_h:

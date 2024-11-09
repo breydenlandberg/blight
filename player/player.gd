@@ -6,6 +6,7 @@ const SPEED := 125
 
 # var
 var direction: float
+var is_attacking := false
 
 # @onready var
 @onready var all_interactions = []
@@ -49,10 +50,11 @@ func handleInput():
 		execute_interaction()
 
 func handleSpriteFlip(direction: float):
-	if direction > 0:
-		sprite.flip_h = false
-	elif direction < 0:
-		sprite.flip_h = true
+	if not is_attacking:
+		if direction > 0:
+			sprite.flip_h = false
+		elif direction < 0:
+			sprite.flip_h = true
 
 # SignalBus
 func computerSays(message: String):
