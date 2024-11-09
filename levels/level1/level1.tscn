@@ -4176,7 +4176,6 @@ _data = {
 
 [node name="UIManager" parent="UI" instance=ExtResource("1_qp1fh")]
 unique_name_in_owner = true
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_j6ok6")]
 position = Vector2(960, 540)
@@ -4279,7 +4278,7 @@ shape = SubResource("WorldBoundaryShape2D_e5uyq")
 [node name="Interacts" type="Node2D" parent="."]
 
 [node name="LonelyTree1" parent="Interacts" instance=ExtResource("17_8rlli")]
-position = Vector2(301, -50)
+position = Vector2(1022, 539)
 scale = Vector2(-0.562139, -2.46476)
 id = "lonely_tree_1"
 label = "Speak"

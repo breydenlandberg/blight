@@ -7,6 +7,7 @@ var current_state: State
 
 # @export var
 @export var animation: AnimationPlayer
+@export var attack_animation: AnimationPlayer
 @export var entity: CharacterBody2D
 @export var initial_state: State
 
@@ -37,6 +38,7 @@ func set_up_state_machine():
 	for child in get_children():
 		if child is State:
 			child.animation = animation
+			child.attack_animation = attack_animation
 			child.entity = entity
 
 			states[child.name.to_lower()] = child

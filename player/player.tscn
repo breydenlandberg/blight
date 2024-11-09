@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddwvd7k4mccxu"]
+[gd_scene load_steps=25 format=3 uid="uid://ddwvd7k4mccxu"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_6vroc"]
 [ext_resource type="Texture2D" uid="uid://cseorcybooh11" path="res://player/assets/player idle 48x48.png" id="2_aj2wh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://player/state_machine/states/ground.gd" id="5_882ut"]
 [ext_resource type="Texture2D" uid="uid://dva6l4wncebsv" path="res://player/assets/player land 48x48.png" id="5_ow6eb"]
 [ext_resource type="Script" path="res://player/state_machine/states/air.gd" id="6_pkvim"]
+[ext_resource type="Texture2D" uid="uid://b2qlprg7nefj7" path="res://player/assets/player sword attack 64x64.png" id="6_q55qb"]
 
 [sub_resource type="Animation" id="Animation_it0ho"]
 length = 0.001
@@ -47,6 +48,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hk45g"]
+resource_name = "attack_basic"
+length = 0.500018
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_q55qb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_sbe4m"]
@@ -259,11 +301,248 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wuv3i"]
 _data = {
 "RESET": SubResource("Animation_it0ho"),
+"attack_basic": SubResource("Animation_hk45g"),
 "fall": SubResource("Animation_sbe4m"),
 "idle": SubResource("Animation_kniw4"),
 "jump": SubResource("Animation_27s5p"),
 "land": SubResource("Animation_q42am"),
 "run": SubResource("Animation_bk4q8")
+}
+
+[sub_resource type="Animation" id="Animation_g0mnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/BasicAttackHitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackPivot/BasicAttackHitbox:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array()]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_noco3"]
+resource_name = "attack_basic"
+length = 1.00002
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/BasicAttackHitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackPivot/BasicAttackHitbox:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333334, 0.500001, 0.666668, 0.833335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(-14.6486, -7.56345, -9.8777, -13.0624, -1.05891, -17.7771, -0.0304556, -12.884), PackedVector2Array(-11.6292, -11.6724, -5.28997, -25.267, 2.74466, -25.9339, 13.9819, -24.004, 11.0236, -17.6599, -3.29414, -17.7161), PackedVector2Array(26.3087, -14.9458, 18.5134, -21.8909, 8.54405, -26.5397, -6.19628, -25.6896, 10.5399, -18.9888, 18.8188, -10.7148), PackedVector2Array(30.7889, 18.0379, 35.4377, 8.06855, 36.7617, -8.96809, 25.5807, -25.2157, 21.9555, -26.9062, 27.8819, -6.48857, 24.2005, 6.13867, 17.6169, 10.7924, 26.3795, 20.3953), PackedVector2Array(-1.0105, -8.35624, -1.07158, -10.5915, -9.28942, -16.6303, -13.3373, -17.4144, -11.8862, -13.4277), PackedVector2Array()]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333334, 0.500001, 0.666668, 0.833335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 6), Vector2(-10, 6), Vector2(-10, 6), Vector2(-10, 6), Vector2(16, 33), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_8fcyb"]
+resource_name = "attack_basic_flip_h"
+length = 1.00002
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/BasicAttackHitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackPivot/BasicAttackHitbox:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f1ixd"]
+_data = {
+"RESET": SubResource("Animation_g0mnu"),
+"attack_basic": SubResource("Animation_noco3"),
+"attack_basic_flip_h": SubResource("Animation_8fcyb")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hgibe"]
@@ -282,14 +561,20 @@ script = ExtResource("1_6vroc")
 texture = ExtResource("2_aj2wh")
 hframes = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wuv3i")
 }
 
-[node name="PlayerStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("animation", "entity", "initial_state")]
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f1ixd")
+}
+
+[node name="PlayerStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("animation", "attack_animation", "entity", "initial_state")]
 script = ExtResource("4_0xj7f")
-animation = NodePath("../AnimationPlayer")
+animation = NodePath("../SpriteAnimationPlayer")
+attack_animation = NodePath("../AttackAnimationPlayer")
 entity = NodePath("..")
 initial_state = NodePath("Ground")
 
@@ -324,6 +609,16 @@ theme = ExtResource("3_1m2ds")
 theme_override_font_sizes/font_size = 128
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AttackPivot" type="Node2D" parent="."]
+
+[node name="BasicAttackHitbox" type="Area2D" parent="AttackPivot"]
+visible = false
+monitoring = false
+monitorable = false
+
+[node name="BasicAttackWeapon" type="CollisionPolygon2D" parent="AttackPivot/BasicAttackHitbox"]
+visible = false
 
 [connection signal="area_entered" from="Interact/InteractArea" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="Interact/InteractArea" to="." method="_on_interact_area_exited"]

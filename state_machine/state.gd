@@ -6,6 +6,7 @@ signal _transition(state, new_state_name)
 
 # var
 var animation: AnimationPlayer
+var attack_animation: AnimationPlayer
 var entity: CharacterBody2D
 var previous_state: State
 

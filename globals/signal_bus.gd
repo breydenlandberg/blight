@@ -4,5 +4,6 @@ extends Node
 # ====================================================================================================
 #
 # Signals
-signal _computer_says(message)
-signal _speech(message)
+signal _attack(attack_type: String)
+signal _computer_says(message: String)
+signal _speech(message:String )

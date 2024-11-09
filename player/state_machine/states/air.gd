@@ -12,7 +12,7 @@ var has_double_jumped = false
 #
 # Functions inherited from State class
 func enter():
-	if not animation.current_animation == 'jump':
+	if animation.current_animation != 'jump' and animation.current_animation != 'attack_basic':
 		animation.play('fall')
 
 func exit():
@@ -31,6 +31,9 @@ func state_physics_process(delta):
 # Air state specific functions
 func double_jump():
 	entity.velocity.y = double_jump_velocity
-	animation.stop()
-	animation.play('jump')
+	
+	if animation.current_animation != 'attack_basic':
+		animation.stop()
+		animation.play('jump')
+
 	has_double_jumped = true

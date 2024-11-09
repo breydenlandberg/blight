@@ -2,7 +2,10 @@ extends CharacterBody2D
 
 
 # const
-const SPEED = 125
+const SPEED := 125
+
+# var
+var direction: float
 
 # @onready var
 @onready var all_interactions = []
@@ -25,39 +28,26 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 
 	# Get the input direction (-1, 0, 1) and use it to handle how we flip the sprite horizontally
-	var direction := Input.get_axis('move_left', 'move_right')
-	handleSpriteFlip(direction)
+	direction = Input.get_axis('move_left', 'move_right')
 
-	# Apply directional movement
+	handleSpriteFlip(direction)
+	handleDirectionalMovement()
+	move_and_slide()
+	handleInput()
+
+# ====================================================================================================
+#
+# Helper functions
+func handleDirectionalMovement():
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	move_and_slide()
-
-	# Handle inputs
+func handleInput():
 	if Input.is_action_just_pressed('interact'):
 		execute_interaction()
 
-# ====================================================================================================
-#
-# Signal functions
-#
-# Interact
-func _on_interact_area_entered(area: Area2D):
-	SignalBus._computer_says.emit('Entered ' + area.name)
-	all_interactions.push_front(area)
-	update_interactions()
-
-func _on_interact_area_exited(area: Area2D):
-	SignalBus._computer_says.emit('Exited ' + area.name)
-	all_interactions.erase(area)
-	update_interactions()
-
-# ====================================================================================================
-#
-# Helper functions
 func handleSpriteFlip(direction: float):
 	if direction > 0:
 		sprite.flip_h = false
@@ -96,3 +86,18 @@ func update_interactions():
 		interact_label.text = current_interaction.label
 	else:
 		interact_label.text = ''
+
+# ====================================================================================================
+#
+# Signal functions
+#
+# Interact
+func _on_interact_area_entered(area: Area2D):
+	SignalBus._computer_says.emit('Entered ' + area.name)
+	all_interactions.push_front(area)
+	update_interactions()
+
+func _on_interact_area_exited(area: Area2D):
+	SignalBus._computer_says.emit('Exited ' + area.name)
+	all_interactions.erase(area)
+	update_interactions()
