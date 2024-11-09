@@ -53,7 +53,8 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_hk45g"]
 resource_name = "attack_basic"
 length = 0.500018
-step = 0.166667
+loop_mode = 1
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -387,6 +388,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_noco3"]
 resource_name = "attack_basic"
 length = 1.00002
+loop_mode = 1
 step = 0.166667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -395,7 +397,7 @@ tracks/0/path = NodePath("AttackPivot/BasicAttackHitbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.833333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -403,59 +405,35 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AttackPivot/BasicAttackHitbox:scale")
+tracks/1/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.833333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(-23, 8, -19, -1, -14, -6, -12, -3), PackedVector2Array(-22, 3, -22, -11, -6, -18, -4, -11), PackedVector2Array(11, -16, -10, -18, -21, -11, 6, -9), PackedVector2Array(29, 14, 28, -1, 21, -17, 2, -25, 14, 11, 24, 17), PackedVector2Array(26, 16, 14, 11, 9, 13, 12, 16), PackedVector2Array()]
+}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:polygon")
+tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333334, 0.500001, 0.666668, 0.833335),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [PackedVector2Array(-14.6486, -7.56345, -9.8777, -13.0624, -1.05891, -17.7771, -0.0304556, -12.884), PackedVector2Array(-11.6292, -11.6724, -5.28997, -25.267, 2.74466, -25.9339, 13.9819, -24.004, 11.0236, -17.6599, -3.29414, -17.7161), PackedVector2Array(26.3087, -14.9458, 18.5134, -21.8909, 8.54405, -26.5397, -6.19628, -25.6896, 10.5399, -18.9888, 18.8188, -10.7148), PackedVector2Array(30.7889, 18.0379, 35.4377, 8.06855, 36.7617, -8.96809, 25.5807, -25.2157, 21.9555, -26.9062, 27.8819, -6.48857, 24.2005, 6.13867, 17.6169, 10.7924, 26.3795, 20.3953), PackedVector2Array(-1.0105, -8.35624, -1.07158, -10.5915, -9.28942, -16.6303, -13.3373, -17.4144, -11.8862, -13.4277), PackedVector2Array()]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333334, 0.500001, 0.666668, 0.833335),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-10, 6), Vector2(-10, 6), Vector2(-10, 6), Vector2(-10, 6), Vector2(16, 33), Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.833333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
