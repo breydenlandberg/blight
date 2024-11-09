@@ -26,7 +26,10 @@ func state_input(event: InputEvent):
 
 func state_physics_process(delta):
 	if attack_animation.current_animation != 'attack_basic' and attack_animation.current_animation != 'attack_basic_flip_h':
+		entity.speed = entity.BASE_SPEED
 		entity.is_attacking = false
+	else:
+		entity.speed = entity.BASE_SPEED * 0.25
 
 	if entity.is_on_floor():
 		if playerCanPlayDefaultAnim():

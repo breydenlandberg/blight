@@ -2,11 +2,12 @@ extends CharacterBody2D
 
 
 # const
-const SPEED := 125
+var BASE_SPEED := 125
 
 # var
 var direction: float
 var is_attacking := false
+var speed := BASE_SPEED
 
 # @onready var
 @onready var all_interactions = []
@@ -41,9 +42,9 @@ func _physics_process(delta):
 # Helper functions
 func handleDirectionalMovement():
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 func handleInput():
 	if Input.is_action_just_pressed('interact'):

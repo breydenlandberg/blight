@@ -2,7 +2,7 @@ class_name Wander extends State
 
 
 # const
-const SPEED = 25
+const speed = 25
 
 # var
 var move_right: bool # Can we just map this to -1, 1, maybe via ternerary operator and be done with it, so that we can just use direction like normal
@@ -38,13 +38,13 @@ func state_physics_process(delta):
 	if move_right:
 		if ray_cast_right_down.is_colliding():
 			sprite.flip_h = true
-			entity.position.x += SPEED * delta
+			entity.position.x += speed * delta
 		else:
 			move_right = false
 	else:
 		if ray_cast_left_down.is_colliding():
 			sprite.flip_h = false
-			entity.position.x -= SPEED * delta
+			entity.position.x -= speed * delta
 		else:
 			move_right = true
 
