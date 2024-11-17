@@ -22,7 +22,7 @@ func state_input(event: InputEvent):
 			jump()
 		if event.is_action_pressed('attack_basic'):
 			SignalBus._attack.emit('attack_basic')
-			SignalBus._computer_says.emit('attack_basic')
+			#SignalBus._computer_says.emit('attack_basic')
 
 func state_physics_process(delta):
 	if attack_animation.current_animation != 'attack_basic' and attack_animation.current_animation != 'attack_basic_flip_h':
@@ -49,8 +49,11 @@ func attack(attack_type: String):
 
 	if sprite.flip_h:
 		attack_animation.play(attack_type + '_flip_h')
+		SignalBus._computer_says.emit(attack_type + '_flip_h')
 	else:
 		attack_animation.play(attack_type)
+		SignalBus._computer_says.emit(attack_type)
+		
 
 func jump():
 	entity.velocity.y = jump_velocity

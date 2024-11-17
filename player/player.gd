@@ -104,3 +104,10 @@ func _on_interact_area_exited(area: Area2D):
 	SignalBus._computer_says.emit('Exited ' + area.name)
 	all_interactions.erase(area)
 	update_interactions()
+
+# Basic attack
+func _on_basic_attack_hitbox_body_entered(body: Node2D) -> void:
+	print(body.name)
+
+func _on_basic_attack_hitbox_area_entered(area: Area2D) -> void:
+	print(area.name)
