@@ -2,6 +2,7 @@ class_name Air extends State
 
 
 # var
+var player: CharacterBody2D
 var has_double_jumped = false
 
 # @export var
@@ -12,6 +13,8 @@ var has_double_jumped = false
 #
 # Functions inherited from State class
 func enter():
+	player = entity
+
 	if animation.current_animation != 'jump' and animation.current_animation != 'attack_basic':
 		animation.play('fall')
 
@@ -23,17 +26,27 @@ func state_input(event: InputEvent):
 		double_jump()
 
 func state_physics_process(delta):
-	if entity.is_on_floor():
+	if player.is_on_floor():
 		_transition.emit(self, 'ground')
 
 # ====================================================================================================
 #
 # Air state specific functions
 func double_jump():
-	entity.velocity.y = double_jump_velocity
+	player.velocity.y = double_jump_velocity
 	
 	if animation.current_animation != 'attack_basic':
 		animation.stop()
 		animation.play('jump')
 
 	has_double_jumped = true
+
+# ====================================================================================================
+#
+# Signal functions
+#
+# Attack
+func _on_attack_animation_player_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		'attack_basic', 'attack_basic_flip_h':
+			animation.play('fall')

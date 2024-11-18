@@ -52,8 +52,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_hk45g"]
 resource_name = "attack_basic"
-length = 0.500018
-step = 0.0833333
+length = 0.25
+step = 0.0417
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,7 +85,7 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"times": PackedFloat32Array(0, 0.0416666, 0.0833335, 0.125, 0.166666, 0.208334),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -350,14 +350,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:polygon")
+tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [PackedVector2Array()]
+"update": 1,
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -374,8 +374,8 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_noco3"]
 resource_name = "attack_basic"
-length = 0.500008
-step = 0.0833333
+length = 0.25
+step = 0.0417
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -383,7 +383,7 @@ tracks/0/path = NodePath("AttackPivot/BasicAttackHitbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.416667),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -407,7 +407,7 @@ tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.416667),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -415,14 +415,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:polygon")
+tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [PackedVector2Array(-23, 8, -19, -1, -14, -6, -12, -3), PackedVector2Array(-22, 3, -22, -11, -6, -18, -4, -11), PackedVector2Array(11, -16, -10, -18, -21, -11, 6, -9), PackedVector2Array(29, 14, 28, -1, 21, -17, 2, -25, 14, 11, 24, 17), PackedVector2Array(26, 16, 14, 11, 9, 13, 12, 16), PackedVector2Array()]
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -431,7 +431,7 @@ tracks/4/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visibl
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.416667),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -439,8 +439,8 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_8fcyb"]
 resource_name = "attack_basic_flip_h"
-length = 0.500008
-step = 0.0833333
+length = 0.25
+step = 0.0417
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -448,7 +448,7 @@ tracks/0/path = NodePath("AttackPivot/BasicAttackHitbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.416667),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -460,10 +460,10 @@ tracks/1/path = NodePath("AttackPivot/BasicAttackHitbox:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833335, 0.166667, 0.250001, 0.333334, 0.416667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1, 1), Vector2(-1, 1), Vector2(-1, 1), Vector2(-1, 1), Vector2(-1, 1), Vector2(1, 1)]
+"values": [Vector2(-1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -472,7 +472,7 @@ tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.416667),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -480,14 +480,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:polygon")
+tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [PackedVector2Array(-23, 8, -19, -1, -14, -6, -12, -3), PackedVector2Array(-22, 3, -22, -11, -6, -18, -4, -11), PackedVector2Array(11, -16, -10, -18, -21, -11, 6, -9), PackedVector2Array(29, 14, 28, -1, 21, -17, 2, -25, 14, 11, 24, 17), PackedVector2Array(26, 16, 14, 11, 9, 13, 12, 16), PackedVector2Array()]
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -496,7 +496,7 @@ tracks/4/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visibl
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.416667),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -578,15 +578,19 @@ vertical_alignment = 1
 
 [node name="BasicAttackHitbox" type="Area2D" parent="AttackPivot"]
 visible = false
-collision_layer = 32
+collision_layer = 0
 collision_mask = 32
 monitoring = false
 monitorable = false
 
 [node name="BasicAttackWeapon" type="CollisionPolygon2D" parent="AttackPivot/BasicAttackHitbox"]
 visible = false
+position = Vector2(18.5, 1.5)
+polygon = PackedVector2Array(8.5, 14.5, 10.5, 6.5, 7.5, -8.5, -0.5, -19.5, -15.5, -25.5, -28.5, -19.5, -40.5, -12.5, -40.5, 4.5, -10.5, -11.5, -7.5, -1.5, -8.5, 14.5)
+disabled = true
 
+[connection signal="animation_finished" from="AttackAnimationPlayer" to="PlayerStateMachine/Ground" method="_on_attack_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AttackAnimationPlayer" to="PlayerStateMachine/Air" method="_on_attack_animation_player_animation_finished"]
 [connection signal="area_entered" from="Interact/InteractArea" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="Interact/InteractArea" to="." method="_on_interact_area_exited"]
-[connection signal="area_entered" from="AttackPivot/BasicAttackHitbox" to="." method="_on_basic_attack_hitbox_area_entered"]
-[connection signal="body_entered" from="AttackPivot/BasicAttackHitbox" to="." method="_on_basic_attack_hitbox_body_entered"]
+[connection signal="body_entered" from="AttackPivot/BasicAttackHitbox" to="PlayerStateMachine/Ground" method="_on_basic_attack_hitbox_body_entered"]
