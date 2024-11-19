@@ -9,6 +9,7 @@ var animation: AnimationPlayer
 var attack_animation: AnimationPlayer
 var entity: CharacterBody2D
 var previous_state: State
+var sprite: Sprite2D
 
 
 # ====================================================================================================

@@ -20,11 +20,12 @@ var speed := BASE_SPEED
 #
 # Main functions
 func _ready():
+	PlayerManager.loadPlayer(self)
 	SignalBus._computer_says.connect(computerSays)
 	SignalBus._speech.connect(speech)
 	update_interactions()
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -104,3 +105,18 @@ func _on_interact_area_exited(area: Area2D):
 	SignalBus._computer_says.emit('Exited ' + area.name)
 	all_interactions.erase(area)
 	update_interactions()
+
+# Attack
+# General
+func _on_attack_animation_player_animation_finished(anim_name: StringName):
+	match anim_name:
+		'attack_basic', 'attack_basic_flip_h':
+			is_attacking = false
+			speed = BASE_SPEED
+			#print('player is no longer attacking')
+
+# Basic attack
+func _on_basic_attack_hitbox_body_entered(body: Node2D):
+	print(EnemyManager.enemies.find(body))
+	#EnemyManager.deal_damage(EnemyManager.enemies[EnemyManager.enemies.find(body)], PlayerManager.attack_basic_damage)
+	# ??? is PlayerManager really necessary ???

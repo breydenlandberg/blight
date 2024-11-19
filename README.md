@@ -12,3 +12,6 @@
 | 21      | Enemy |
 | ======= | =========== |
 | 30      | Foreground |
+
+TODO:
+	1. Look into replacing strings with enums.

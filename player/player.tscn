@@ -535,12 +535,13 @@ libraries = {
 "": SubResource("AnimationLibrary_f1ixd")
 }
 
-[node name="PlayerStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("animation", "attack_animation", "entity", "initial_state")]
+[node name="PlayerStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("animation", "attack_animation", "entity", "initial_state", "sprite")]
 script = ExtResource("4_0xj7f")
 animation = NodePath("../SpriteAnimationPlayer")
 attack_animation = NodePath("../AttackAnimationPlayer")
 entity = NodePath("..")
 initial_state = NodePath("Ground")
+sprite = NodePath("../Sprite2D")
 
 [node name="Ground" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_882ut")
@@ -589,8 +590,7 @@ position = Vector2(18.5, 1.5)
 polygon = PackedVector2Array(8.5, 14.5, 10.5, 6.5, 7.5, -8.5, -0.5, -19.5, -15.5, -25.5, -28.5, -19.5, -40.5, -12.5, -40.5, 4.5, -10.5, -11.5, -7.5, -1.5, -8.5, 14.5)
 disabled = true
 
-[connection signal="animation_finished" from="AttackAnimationPlayer" to="PlayerStateMachine/Ground" method="_on_attack_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AttackAnimationPlayer" to="PlayerStateMachine/Air" method="_on_attack_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AttackAnimationPlayer" to="." method="_on_attack_animation_player_animation_finished"]
 [connection signal="area_entered" from="Interact/InteractArea" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="Interact/InteractArea" to="." method="_on_interact_area_exited"]
-[connection signal="body_entered" from="AttackPivot/BasicAttackHitbox" to="PlayerStateMachine/Ground" method="_on_basic_attack_hitbox_body_entered"]
+[connection signal="body_entered" from="AttackPivot/BasicAttackHitbox" to="." method="_on_basic_attack_hitbox_body_entered"]
