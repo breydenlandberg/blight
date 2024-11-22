@@ -72,9 +72,3 @@ func playerCanPlayDefaultAnim() -> bool:
 				return false
 			else:
 				return true
-
-# ====================================================================================================
-#
-# Signal functions
-#
-# 

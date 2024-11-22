@@ -10,6 +10,7 @@ extends Area2D
 func _on_body_entered(body: Node2D):
 	SignalBus._computer_says.emit('You killed yourself')
 	timer.start()
-	
+
 func _on_timer_timeout():
+	EntityManager.reset()
 	get_tree().reload_current_scene()

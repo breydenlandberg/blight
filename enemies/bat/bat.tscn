@@ -154,9 +154,10 @@ libraries = {
 "": SubResource("AnimationLibrary_8ange")
 }
 
-[node name="BatStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("animation", "entity", "initial_state", "sprite")]
+[node name="BatStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("animation", "attack_animation", "entity", "initial_state", "sprite")]
 script = ExtResource("2_afu81")
 animation = NodePath("../AnimationPlayer")
+attack_animation = NodePath("../AnimationPlayer")
 entity = NodePath("..")
 initial_state = NodePath("Idle")
 sprite = NodePath("../Sprite2D")

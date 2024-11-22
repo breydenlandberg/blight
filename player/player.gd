@@ -9,14 +9,16 @@ var direction: float
 var is_attacking := false
 var speed := BASE_SPEED
 
-var health := 100
-var energy := 100
-
 # @onready var
 @onready var all_interactions = []
 @onready var interact_label: Label = $Interact/InteractLabel
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var ui_manager: CanvasLayer = %UIManager
+
+# @export var
+@export var base_damage := 5
+@export var energy := 100
+@export var health := 100
 
 
 # ====================================================================================================
@@ -109,15 +111,11 @@ func _on_interact_area_exited(area: Area2D):
 	update_interactions()
 
 # Attack
-# General
 func _on_attack_animation_player_animation_finished(anim_name: StringName):
 	match anim_name:
 		'attack_basic', 'attack_basic_flip_h':
 			is_attacking = false
 			speed = BASE_SPEED
-			#print('player is no longer attacking')
 
-# Basic attack
 func _on_basic_attack_hitbox_body_entered(body: Node2D):
-	print(EnemyManager.enemies.find(body))
-	#EnemyManager.deal_damage(EnemyManager.enemies[EnemyManager.enemies.find(body)], PlayerManager.attack_basic_damage)
+	EntityManager.deal_damage(body, base_damage)
