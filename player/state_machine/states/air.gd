@@ -5,6 +5,8 @@ class_name Air extends State
 # Default animations: fall
 # Possible animations: attack_basic, jump
 
+# Possible attack animations: attack_basic, attack_basic_flip_h
+
 
 # var
 var player: CharacterBody2D

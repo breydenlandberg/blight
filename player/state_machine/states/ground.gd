@@ -5,6 +5,8 @@ class_name Ground extends State
 # Default animations: idle, run
 # Possible animations: attack_basic, land
 
+# Possible attack animations: attack_basic, attack_basic_flip_h
+
 
 # var
 var player: CharacterBody2D

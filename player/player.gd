@@ -9,6 +9,9 @@ var direction: float
 var is_attacking := false
 var speed := BASE_SPEED
 
+var health := 100
+var energy := 100
+
 # @onready var
 @onready var all_interactions = []
 @onready var interact_label: Label = $Interact/InteractLabel
@@ -20,7 +23,6 @@ var speed := BASE_SPEED
 #
 # Main functions
 func _ready():
-	PlayerManager.loadPlayer(self)
 	SignalBus._computer_says.connect(computerSays)
 	SignalBus._speech.connect(speech)
 	update_interactions()
@@ -119,4 +121,3 @@ func _on_attack_animation_player_animation_finished(anim_name: StringName):
 func _on_basic_attack_hitbox_body_entered(body: Node2D):
 	print(EnemyManager.enemies.find(body))
 	#EnemyManager.deal_damage(EnemyManager.enemies[EnemyManager.enemies.find(body)], PlayerManager.attack_basic_damage)
-	# ??? is PlayerManager really necessary ???
