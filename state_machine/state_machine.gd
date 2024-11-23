@@ -16,7 +16,7 @@ var current_state: State
 # ====================================================================================================
 #
 # To be used in child StateMachines that inherit from this parent class, e.g. PlayerStateMachine,
-# BatStateMachine, etc.
+# TentaclimeStateMachine, etc.
 #
 # Used in _input
 func handle_input(event: InputEvent):

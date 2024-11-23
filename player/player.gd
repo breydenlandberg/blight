@@ -1,14 +1,6 @@
 extends CharacterBody2D
 
 
-# const
-var BASE_SPEED := 125
-
-# var
-var direction: float
-var is_attacking := false
-var speed := BASE_SPEED
-
 # @onready var
 @onready var all_interactions = []
 @onready var interact_label: Label = $Interact/InteractLabel
@@ -17,8 +9,14 @@ var speed := BASE_SPEED
 
 # @export var
 @export var base_damage := 5
+@export var base_speed := 125
 @export var energy := 100
 @export var health := 100
+
+# var
+var direction: float
+var is_attacking := false
+var speed := base_speed
 
 
 # ====================================================================================================
@@ -115,7 +113,7 @@ func _on_attack_animation_player_animation_finished(anim_name: StringName):
 	match anim_name:
 		'attack_basic', 'attack_basic_flip_h':
 			is_attacking = false
-			speed = BASE_SPEED
+			speed = base_speed
 
 func _on_basic_attack_hitbox_body_entered(body: Node2D):
 	EntityManager.deal_damage(body, base_damage)

@@ -21,7 +21,7 @@ var player: CharacterBody2D
 func enter():
 	player = entity
 
-	if previous_state and previous_state.name.to_lower() == 'air' and player.velocity.length() == 0:
+	if previous_state and previous_state.name.to_lower() == 'air' and player.velocity.length() == 0 and not player.is_attacking:
 		animation.play('land')
 
 func state_input(event: InputEvent):
@@ -47,8 +47,7 @@ func state_physics_process(delta):
 # Ground state specific functions
 func attack_basic():
 	player.is_attacking = true
-	player.speed = player.BASE_SPEED * 0.25
-	#print('player is attacking')
+	player.speed = player.base_speed * 0.25
 
 	animation.play('attack_basic')
 

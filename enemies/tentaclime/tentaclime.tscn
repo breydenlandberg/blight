@@ -1,0 +1,240 @@
+[gd_scene load_steps=16 format=3 uid="uid://ds51rb302ldjx"]
+
+[ext_resource type="Script" path="res://enemies/tentaclime/tentaclime.gd" id="1_fex0k"]
+[ext_resource type="Script" path="res://enemies/tentaclime/state_machine/tentaclime_state_machine.gd" id="2_afu81"]
+[ext_resource type="Texture2D" uid="uid://ucf0ftdgeaoj" path="res://enemies/tentaclime/assets/Tentaclime_Idle.png" id="2_euvg3"]
+[ext_resource type="Script" path="res://enemies/tentaclime/state_machine/states/attack.gd" id="3_cjpp8"]
+[ext_resource type="Texture2D" uid="uid://bgl8xokr4uxn4" path="res://enemies/tentaclime/assets/Tentaclime_Run.png" id="3_kj44v"]
+[ext_resource type="Script" path="res://enemies/tentaclime/state_machine/states/idle.gd" id="4_f25jj"]
+[ext_resource type="Texture2D" uid="uid://bcvll8mfudk8q" path="res://enemies/tentaclime/assets/Tentaclime_Death.png" id="4_gjvtm"]
+[ext_resource type="Script" path="res://enemies/tentaclime/state_machine/states/wander.gd" id="5_5327t"]
+[ext_resource type="Script" path="res://enemies/tentaclime/state_machine/states/die.gd" id="9_0qr4i"]
+
+[sub_resource type="Animation" id="Animation_o5y6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_euvg3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q5aa4"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_euvg3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_mbrmx"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_kj44v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_apov4"]
+resource_name = "die"
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_gjvtm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 2, 2, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ange"]
+_data = {
+"RESET": SubResource("Animation_o5y6i"),
+"die": SubResource("Animation_apov4"),
+"idle": SubResource("Animation_q5aa4"),
+"run": SubResource("Animation_mbrmx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1jpo"]
+size = Vector2(8.28572, 18)
+
+[node name="Tentaclime" type="CharacterBody2D"]
+z_index = 21
+collision_layer = 48
+script = ExtResource("1_fex0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_euvg3")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8ange")
+}
+
+[node name="TentaclimeStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("animation", "attack_animation", "entity", "initial_state", "sprite")]
+script = ExtResource("2_afu81")
+animation = NodePath("../AnimationPlayer")
+attack_animation = NodePath("../AnimationPlayer")
+entity = NodePath("..")
+initial_state = NodePath("Idle")
+sprite = NodePath("../Sprite2D")
+
+[node name="Attack" type="Node2D" parent="TentaclimeStateMachine"]
+script = ExtResource("3_cjpp8")
+
+[node name="Idle" type="Node2D" parent="TentaclimeStateMachine"]
+script = ExtResource("4_f25jj")
+
+[node name="Wander" type="Node2D" parent="TentaclimeStateMachine"]
+script = ExtResource("5_5327t")
+
+[node name="Die" type="Node2D" parent="TentaclimeStateMachine"]
+script = ExtResource("9_0qr4i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 6)
+scale = Vector2(3.5, 1)
+shape = SubResource("RectangleShape2D_g1jpo")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-20, 0)
+
+[node name="RayCastRightDown" type="RayCast2D" parent="."]
+position = Vector2(10, 0)
+target_position = Vector2(0, 25)
+
+[node name="RayCastLeftDown" type="RayCast2D" parent="."]
+position = Vector2(-10, 0)
+target_position = Vector2(0, 25)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="TentaclimeStateMachine/Die" method="_on_animation_player_animation_finished"]

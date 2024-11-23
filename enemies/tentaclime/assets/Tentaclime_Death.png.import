@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkwk3hcwvohpt"
-path="res://.godot/imported/Bat-WakeUp.png-b8374527e79ad5c4a115a51f4da4eedb.ctex"
+uid="uid://bcvll8mfudk8q"
+path="res://.godot/imported/Tentaclime_Death.png-e6f3bd934b313a861ddef5496dc254cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/bat/assets/Bat-WakeUp.png"
-dest_files=["res://.godot/imported/Bat-WakeUp.png-b8374527e79ad5c4a115a51f4da4eedb.ctex"]
+source_file="res://enemies/tentaclime/assets/Tentaclime_Death.png"
+dest_files=["res://.godot/imported/Tentaclime_Death.png-e6f3bd934b313a861ddef5496dc254cc.ctex"]
 
 [params]
 

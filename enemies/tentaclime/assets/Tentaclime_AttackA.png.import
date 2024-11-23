@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1gdaykeb4omv"
-path="res://.godot/imported/Bat-IdleFly.png-81bafecd3acff000dc562d2eca124caf.ctex"
+uid="uid://jcqxgxhe4u2w"
+path="res://.godot/imported/Tentaclime_AttackA.png-98bdf01e0d414b3296f88d206276f464.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/bat/assets/Bat-IdleFly.png"
-dest_files=["res://.godot/imported/Bat-IdleFly.png-81bafecd3acff000dc562d2eca124caf.ctex"]
+source_file="res://enemies/tentaclime/assets/Tentaclime_AttackA.png"
+dest_files=["res://.godot/imported/Tentaclime_AttackA.png-98bdf01e0d414b3296f88d206276f464.ctex"]
 
 [params]
 

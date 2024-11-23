@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxgqmhb1ujgtw"
-path="res://.godot/imported/Bat-Attack1.png-8eaaacc4924dc233e2237750a45f1faf.ctex"
+uid="uid://bgl8xokr4uxn4"
+path="res://.godot/imported/Tentaclime_Run.png-e5e18163fbc184ee8696fcfef92904e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/bat/assets/Bat-Attack1.png"
-dest_files=["res://.godot/imported/Bat-Attack1.png-8eaaacc4924dc233e2237750a45f1faf.ctex"]
+source_file="res://enemies/tentaclime/assets/Tentaclime_Run.png"
+dest_files=["res://.godot/imported/Tentaclime_Run.png-e5e18163fbc184ee8696fcfef92904e0.ctex"]
 
 [params]
 

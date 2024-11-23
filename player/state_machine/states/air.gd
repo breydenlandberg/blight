@@ -44,8 +44,7 @@ func state_physics_process(delta):
 # Air state specific functions
 func attack_basic():
 	player.is_attacking = true
-	player.speed = player.BASE_SPEED * 0.25
-	#print('player is attacking')
+	player.speed = player.base_speed * 0.25
 
 	animation.play('attack_basic')
 

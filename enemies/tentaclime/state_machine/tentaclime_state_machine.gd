@@ -1,4 +1,4 @@
-class_name BatStateMachine extends StateMachine
+class_name TentaclimeStateMachine extends StateMachine
 
 
 # ====================================================================================================

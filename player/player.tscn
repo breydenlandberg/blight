@@ -383,7 +383,7 @@ tracks/0/path = NodePath("AttackPivot/BasicAttackHitbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -407,7 +407,7 @@ tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -419,7 +419,7 @@ tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:disabl
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -431,7 +431,7 @@ tracks/4/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visibl
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -448,7 +448,7 @@ tracks/0/path = NodePath("AttackPivot/BasicAttackHitbox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -472,7 +472,7 @@ tracks/2/path = NodePath("AttackPivot/BasicAttackHitbox:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -484,7 +484,7 @@ tracks/3/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:disabl
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -496,7 +496,7 @@ tracks/4/path = NodePath("AttackPivot/BasicAttackHitbox/BasicAttackWeapon:visibl
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -509,9 +509,8 @@ _data = {
 "attack_basic_flip_h": SubResource("Animation_8fcyb")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hgibe"]
-radius = 7.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqvae"]
+size = Vector2(15, 27)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ha7y"]
 radius = 36.0
@@ -550,8 +549,8 @@ script = ExtResource("5_882ut")
 script = ExtResource("6_pkvim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_hgibe")
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_lqvae")
 
 [node name="Interact" type="Node2D" parent="."]
 z_index = 40

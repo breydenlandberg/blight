@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dm1eoykka2o2g" path="res://ui/ui_manager.tscn" id="1_qp1fh"]
 [ext_resource type="PackedScene" uid="uid://ddwvd7k4mccxu" path="res://player/player.tscn" id="2_j6ok6"]
-[ext_resource type="PackedScene" uid="uid://ds51rb302ldjx" path="res://enemies/bat/bat.tscn" id="3_0bkn0"]
+[ext_resource type="PackedScene" uid="uid://ds51rb302ldjx" path="res://enemies/tentaclime/tentaclime.tscn" id="3_b7r44"]
 [ext_resource type="Texture2D" uid="uid://dtod7a1oyqafw" path="res://assets/tilesets/Decoratives.png" id="8_ue3t0"]
 [ext_resource type="PackedScene" uid="uid://bvn5s1emeowj4" path="res://platforms/forest/forest_platform.tscn" id="15_14udd"]
 [ext_resource type="Texture2D" uid="uid://0e1v37mlmyju" path="res://assets/background/background day 1.png" id="15_nniu5"]
@@ -1168,25 +1168,25 @@ texture = ExtResource("15_q60ux")
 54:29/0 = 0
 55:29/0 = 0
 0:31/0 = 0
-0:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.02769, 5.05937, -5.96494, 8, -8, 8, 8, 8, 8, 5.02)
+0:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4.96094, 5.90588, 5.00031, 8, 3.97663, 8, 8, -8, 8)
 1:31/0 = 0
-1:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.99631, 8, 4.03569, 8, 8, -8, 8)
+1:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.97748, 8, 8, -8, 8, -8, 3.96875)
 2:31/0 = 0
-2:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4.94125, 8, 4.94125, 8, 8, -8, 8)
+2:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.97748, 8, 8, -8, 8, -8, 3.96875)
 3:31/0 = 0
-3:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4.94125, 8, 4.94125, 8, 8, -8, 8)
+3:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.97748, 8, 8, -8, 8, -8, 3.96875)
 4:31/0 = 0
-4:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4.94125, 8, 4.94125, 8, 8, -8, 8)
+4:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.97748, 8, 8, -8, 8, -8, 3.96875)
 5:31/0 = 0
-5:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4.94125, 8, 4.94125, 8, 8, -8, 8)
+5:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.97748, 8, 8, -8, 8, -8, 3.96875)
 6:31/0 = 0
-6:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.99631, 8, 4.03569, 8, 8, -8, 8)
+6:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.97748, 8, 8, -8, 8, -8, 3.96875)
 7:31/0 = 0
-7:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.99631, 8, 4.03569, 8, 8, -8, 8)
+7:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.97748, 8, 8, -8, 8, -8, 3.96875)
 8:31/0 = 0
-8:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.99631, 8, 4.03569, 8, 8, -8, 8)
+8:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.97748, 8, 8, -8, 8, -8, 3.96875)
 9:31/0 = 0
-9:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(2.02769, 5.05937, 5.96494, 8, -8, 8, -8, 5.02)
+9:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 4.96094, -5.90588, 5.00031, -8, 3.97663, -8, 8, 8, 8)
 12:31/0 = 0
 13:31/0 = 0
 14:31/0 = 0
@@ -4189,11 +4189,11 @@ position_smoothing_enabled = true
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Bat" parent="Enemies" instance=ExtResource("3_0bkn0")]
-position = Vector2(1200, 530)
+[node name="Tentaclime" parent="Enemies" instance=ExtResource("3_b7r44")]
+position = Vector2(1300, 557)
 
-[node name="Bat2" parent="Enemies" instance=ExtResource("3_0bkn0")]
-position = Vector2(1296, 555)
+[node name="Tentaclime2" parent="Enemies" instance=ExtResource("3_b7r44")]
+position = Vector2(1500, 524)
 
 [node name="World" type="Node2D" parent="."]
 
