@@ -8,8 +8,8 @@
 | 10      | Midground Behind |
 | 11      | Midground Front |
 | ======= | =========== |
-| 20      | Player |
-| 21      | Enemy |
+| 20      | Enemy |
+| 21      | Player |
 | ======= | =========== |
 | 30      | Foreground |
 

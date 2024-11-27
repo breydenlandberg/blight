@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ds51rb302ldjx"]
+[gd_scene load_steps=18 format=3 uid="uid://ds51rb302ldjx"]
 
 [ext_resource type="Script" path="res://enemies/tentaclime/tentaclime.gd" id="1_fex0k"]
 [ext_resource type="Script" path="res://enemies/tentaclime/state_machine/tentaclime_state_machine.gd" id="2_afu81"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://enemies/tentaclime/state_machine/states/idle.gd" id="4_f25jj"]
 [ext_resource type="Texture2D" uid="uid://bcvll8mfudk8q" path="res://enemies/tentaclime/assets/Tentaclime_Death.png" id="4_gjvtm"]
 [ext_resource type="Script" path="res://enemies/tentaclime/state_machine/states/wander.gd" id="5_5327t"]
+[ext_resource type="Texture2D" uid="uid://d3ei2njlr3tn2" path="res://enemies/tentaclime/assets/Tentaclime_Hit.png" id="5_hwi8f"]
 [ext_resource type="Script" path="res://enemies/tentaclime/state_machine/states/die.gd" id="9_0qr4i"]
 
 [sub_resource type="Animation" id="Animation_o5y6i"]
@@ -47,6 +48,46 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_apov4"]
+resource_name = "die"
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_gjvtm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 2, 2, 2]
 }
 
 [sub_resource type="Animation" id="Animation_q5aa4"]
@@ -133,9 +174,10 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_apov4"]
-resource_name = "die"
-step = 0.166667
+[sub_resource type="Animation" id="Animation_memmj"]
+resource_name = "take_damage"
+length = 0.25
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -146,7 +188,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_gjvtm")]
+"values": [ExtResource("5_hwi8f")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -158,7 +200,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -167,10 +209,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 2, 2, 2]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ange"]
@@ -178,14 +220,15 @@ _data = {
 "RESET": SubResource("Animation_o5y6i"),
 "die": SubResource("Animation_apov4"),
 "idle": SubResource("Animation_q5aa4"),
-"run": SubResource("Animation_mbrmx")
+"run": SubResource("Animation_mbrmx"),
+"take_damage": SubResource("Animation_memmj")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1jpo"]
 size = Vector2(8.28572, 18)
 
 [node name="Tentaclime" type="CharacterBody2D"]
-z_index = 21
+z_index = 20
 collision_layer = 48
 script = ExtResource("1_fex0k")
 
@@ -237,4 +280,5 @@ target_position = Vector2(0, 25)
 position = Vector2(-10, 0)
 target_position = Vector2(0, 25)
 
+[connection signal="animation_finished" from="AnimationPlayer" to="TentaclimeStateMachine/Idle" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="TentaclimeStateMachine/Die" method="_on_animation_player_animation_finished"]

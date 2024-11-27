@@ -20,6 +20,8 @@ func deal_damage(entity: CharacterBody2D, damage: int):
 
 			print(entity, ' died!')
 			print('All entities: ', entities)
+		else:
+			entity.animation.play('take_damage')
 	else:
 		print('Entity ', entities[entities.find(entity)], ' is not attackable!')
 

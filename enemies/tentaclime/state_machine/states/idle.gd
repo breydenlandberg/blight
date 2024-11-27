@@ -21,3 +21,9 @@ func enter():
 	await get_tree().create_timer(idle_length).timeout
 
 	_transition.emit(self, 'wander')
+
+# ====================================================================================================
+#
+# Signal functions
+func _on_animation_player_animation_finished(anim_name: StringName):
+	animation.play('idle')
