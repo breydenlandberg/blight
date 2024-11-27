@@ -23,7 +23,7 @@ var speed := base_speed
 #
 # Main functions
 func _ready():
-	SignalBus._computer_says.connect(computerSays)
+	SignalBus._message.connect(message)
 	SignalBus._speech.connect(speech)
 	update_interactions()
 
@@ -61,29 +61,21 @@ func handleSpriteFlip(direction: float):
 			sprite.flip_h = true
 
 # SignalBus
-func computerSays(message: String):
-	var activity = ui_manager.get_node('MasterContainer/ComputerSays/OuterContainer/InnerContainer/ScrollContainer/Activity')
+func message(message: String):
+	var message_text = ui_manager.get_node('MasterContainer/Message/PanelContainer/MarginContainer/ScrollContainer/MessageText')
 
-	if activity.text.length() == 0:
-		activity.text += message
+	if message_text.text.length() == 0:
+		message_text.text += message
 	else:
-		activity.text += ('\n' + message)
+		message_text.text += ('\n' + message)
 
 func speech(message: String):
-	var speech = ui_manager.get_node('MasterContainer/Speech')
-	var speech_text = ui_manager.get_node('MasterContainer/Speech/ScrollContainer/MarginContainer/SpeechText')
-	var speech_timer = ui_manager.get_node('MasterContainer/Speech/SpeechTimer')
-
-	speech.visible = true
-	speech_text.text = message
-	speech_timer.start()
+	pass
 
 # Interact
 func execute_interaction():
 	if all_interactions:
 		var current_interaction = all_interactions[0]
-		SignalBus._computer_says.emit('Interacted with ' + current_interaction.id)
-		SignalBus._speech.emit(current_interaction.value)
 
 func update_interactions():
 	if all_interactions:
@@ -99,12 +91,10 @@ func update_interactions():
 #
 # Interact
 func _on_interact_area_entered(area: Area2D):
-	SignalBus._computer_says.emit('Entered ' + area.name)
 	all_interactions.push_front(area)
 	update_interactions()
 
 func _on_interact_area_exited(area: Area2D):
-	SignalBus._computer_says.emit('Exited ' + area.name)
 	all_interactions.erase(area)
 	update_interactions()
 

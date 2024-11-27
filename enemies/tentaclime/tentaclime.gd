@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var attackable := true
 @export var base_damage := 5
 @export var base_speed := 25
-@export var health := 10
+@export var health := 20
 
 # var
 var direction: int

@@ -63,8 +63,6 @@ func transition(state, new_state_name):
 		push_warning('Passed state \'' + state.name.to_lower() + '\' does not equal current state \'' + current_state.name + '\'')
 		return
 
-	SignalBus._computer_says.emit(entity.name + ' OLD state: ' + state.name.to_lower() + ' | NEW state: ' + new_state_name)
-
 	var new_state = states.get(new_state_name.to_lower())
 
 	if !new_state:

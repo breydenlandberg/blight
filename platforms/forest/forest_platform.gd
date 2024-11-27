@@ -12,11 +12,9 @@ extends AnimatableBody2D
 # Signal functions
 func _on_detect_area_body_entered(body: Node2D) -> void:
 	animation_player.play('move_right')
-	SignalBus._computer_says.emit('Set foot on ' + name)
 	detection.queue_free()
 	print('queue free ' + name + ' detection')
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	animation_player.queue_free()
-	SignalBus._computer_says.emit(name + ' finished its journey')
 	print('queue free' + name + 'animation_player')

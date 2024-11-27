@@ -8,7 +8,7 @@ extends Area2D
 #
 # Signal functions
 func _on_body_entered(body: Node2D):
-	SignalBus._computer_says.emit('You killed yourself')
+	SignalBus._message.emit('You killed yourself')
 	timer.start()
 
 func _on_timer_timeout():

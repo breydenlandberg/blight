@@ -12,18 +12,18 @@ func deal_damage(entity: CharacterBody2D, damage: int):
 	if entity.attackable and entity.health > 0:
 		entity.health -= damage
 
-		print('Entity ', entities[entities.find(entity)], ' is attackable! Took ', damage, ' damage!')
-		print('Health ', entity.health)
+		SignalBus._message.emit(str(entity.name, ' took ', damage, ' damage '))
+		print(entity, ' health: ', entity.health)
 
 		if entity.health <= 0:
 			kill(entity)
 
-			print(entity, ' died!')
+			SignalBus._message.emit(str(entity.name, ' murdered!'))
 			print('All entities: ', entities)
 		else:
 			entity.animation.play('take_damage')
 	else:
-		print('Entity ', entities[entities.find(entity)], ' is not attackable!')
+		print(entity, ' is not attackable!')
 
 	print('\n')
 

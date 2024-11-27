@@ -13,5 +13,10 @@
 | ======= | =========== |
 | 30      | Foreground |
 
+https://colorkit.co/color/020302/
+https://colorkit.co/color/c1ffdc/
+
+
 TODO:
-	1. Look into replacing strings with enums.
+Look into replacing strings with enums.
+If enemy (Tentaclime) changes state while in take_damage animation, the animation won't complete. Actually, taking damage fucks up the animations. Pls fix.
