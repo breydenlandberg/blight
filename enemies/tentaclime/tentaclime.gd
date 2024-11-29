@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 # @onready var
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var player: CharacterBody2D = $"../../Player"
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: TentaclimeStateMachine = $TentaclimeStateMachine
 
@@ -28,8 +29,8 @@ func _physics_process(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	handleSpriteFlip(direction)
-	handleDirectionalMovement()
+	handle_sprite_flip()
+	handle_directional_movement()
 	move_and_slide()
 
 # ====================================================================================================
@@ -38,14 +39,23 @@ func _physics_process(delta: float):
 func die():
 	state_machine.transition(state_machine.current_state, 'die')
 
-func handleDirectionalMovement():
+func handle_directional_movement():
 	if direction:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
-func handleSpriteFlip(direction: float):
+func handle_sprite_flip():
 	if direction > 0:
 		sprite.flip_h = false
 	elif direction < 0:
 		sprite.flip_h = true
+
+# ====================================================================================================
+#
+# Signal functions
+func _on_player_detection_area_body_entered(body: Node2D):
+	state_machine.transition(state_machine.current_state, 'attack')
+
+func _on_player_detection_area_body_exited(body: Node2D):
+	state_machine.transition(state_machine.current_state, 'idle')

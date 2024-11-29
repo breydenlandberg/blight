@@ -35,25 +35,26 @@ func _physics_process(delta: float):
 	# Get the input direction (-1, 0, 1) and use it to handle how we flip the sprite horizontally
 	direction = Input.get_axis('move_left', 'move_right')
 
-	handleSpriteFlip(direction)
-	handleDirectionalMovement()
+	handle_sprite_flip()
+	handle_directional_movement()
 	move_and_slide()
-	handleInput()
+
+	handle_input()
 
 # ====================================================================================================
 #
 # Helper functions
-func handleDirectionalMovement():
+func handle_directional_movement():
 	if direction:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
-func handleInput():
+func handle_input():
 	if Input.is_action_just_pressed('interact'):
 		InteractManager.execute_current_interaction()
 
-func handleSpriteFlip(direction: float):
+func handle_sprite_flip():
 	if not is_attacking:
 		if direction > 0:
 			sprite.flip_h = false

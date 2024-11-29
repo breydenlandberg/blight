@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ds51rb302ldjx"]
+[gd_scene load_steps=19 format=3 uid="uid://ds51rb302ldjx"]
 
 [ext_resource type="Script" path="res://enemies/tentaclime/tentaclime.gd" id="1_fex0k"]
 [ext_resource type="Script" path="res://enemies/tentaclime/state_machine/tentaclime_state_machine.gd" id="2_afu81"]
@@ -227,6 +227,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1jpo"]
 size = Vector2(8.28572, 18)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70qcx"]
+size = Vector2(161, 59)
+
 [node name="Tentaclime" type="CharacterBody2D"]
 z_index = 20
 collision_layer = 48
@@ -266,6 +269,14 @@ position = Vector2(-3.5, 6)
 scale = Vector2(3.5, 1)
 shape = SubResource("RectangleShape2D_g1jpo")
 
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+shape = SubResource("RectangleShape2D_70qcx")
+
 [node name="RayCastRight" type="RayCast2D" parent="."]
 target_position = Vector2(20, 0)
 
@@ -282,3 +293,5 @@ target_position = Vector2(0, 25)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="TentaclimeStateMachine/Idle" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="TentaclimeStateMachine/Die" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

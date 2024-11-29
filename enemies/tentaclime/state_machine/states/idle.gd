@@ -1,6 +1,7 @@
 class_name Idle extends State
 
 
+# var
 var tentaclime: CharacterBody2D
 
 
