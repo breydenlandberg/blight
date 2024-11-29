@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EntityManager="*res://globals/entity_manager.gd"
+InteractManager="*res://globals/interact_manager.gd"
 SignalBus="*res://globals/signal_bus.gd"
 
 [display]

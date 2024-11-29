@@ -23,9 +23,9 @@ var speed := base_speed
 #
 # Main functions
 func _ready():
+	InteractManager.set_player(self)
+	# Maybe below doesn't need to be a signal?
 	SignalBus._message.connect(message)
-	SignalBus._speech.connect(speech)
-	update_interactions()
 
 func _physics_process(delta: float):
 	# Gravity
@@ -51,7 +51,7 @@ func handleDirectionalMovement():
 
 func handleInput():
 	if Input.is_action_just_pressed('interact'):
-		execute_interaction()
+		InteractManager.execute_current_interaction()
 
 func handleSpriteFlip(direction: float):
 	if not is_attacking:
@@ -69,34 +69,18 @@ func message(message: String):
 	else:
 		message_text.text += ('\n' + message)
 
-func speech(message: String):
-	pass
-
-# Interact
-func execute_interaction():
-	if all_interactions:
-		var current_interaction = all_interactions[0]
-
-func update_interactions():
-	if all_interactions:
-		var current_interaction = all_interactions[0]
-
-		interact_label.text = current_interaction.label
-	else:
-		interact_label.text = ''
-
 # ====================================================================================================
 #
 # Signal functions
 #
 # Interact
-func _on_interact_area_entered(area: Area2D):
-	all_interactions.push_front(area)
-	update_interactions()
+func _on_interact_area_entered(interaction: Interaction):
+	InteractManager.push_front(interaction)
+	InteractManager.update_interact_label()
 
-func _on_interact_area_exited(area: Area2D):
-	all_interactions.erase(area)
-	update_interactions()
+func _on_interact_area_exited(interaction: Interaction):
+	InteractManager.erase(interaction)
+	InteractManager.update_interact_label()
 
 # Attack
 func _on_attack_animation_player_animation_finished(anim_name: StringName):

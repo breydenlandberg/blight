@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://c4rlpl33e1umb"]
+[gd_scene load_steps=24 format=4 uid="uid://c4rlpl33e1umb"]
 
 [ext_resource type="PackedScene" uid="uid://dm1eoykka2o2g" path="res://ui/ui_manager.tscn" id="1_qp1fh"]
 [ext_resource type="PackedScene" uid="uid://ddwvd7k4mccxu" path="res://player/player.tscn" id="2_j6ok6"]
 [ext_resource type="PackedScene" uid="uid://ds51rb302ldjx" path="res://enemies/tentaclime/tentaclime.tscn" id="3_b7r44"]
 [ext_resource type="Texture2D" uid="uid://dtod7a1oyqafw" path="res://assets/tilesets/Decoratives.png" id="8_ue3t0"]
+[ext_resource type="Theme" uid="uid://c5y1ghgoypah4" path="res://ui/theme.tres" id="13_6k5ar"]
 [ext_resource type="PackedScene" uid="uid://bvn5s1emeowj4" path="res://platforms/forest/forest_platform.tscn" id="15_14udd"]
 [ext_resource type="Texture2D" uid="uid://0e1v37mlmyju" path="res://assets/background/background day 1.png" id="15_nniu5"]
 [ext_resource type="Texture2D" uid="uid://3dt2n7o1sq8j" path="res://assets/tilesets/MainLevBuild.png" id="15_q60ux"]
@@ -6819,7 +6820,15 @@ scale = Vector2(0.29353, 0.422326)
 id = "mysterious_pillar"
 label = "Inspect"
 type = "text"
-value = "A mysterious pillar."
+value = "The mysterious pillar reads: SCUM FUCK FLOWER BOY!"
+
+[node name="TextLabel" type="Label" parent="Interacts/MysteriousPillar"]
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = -50.0
+theme = ExtResource("13_6k5ar")
+autowrap_mode = 2
 
 [connection signal="body_entered" from="Platforms/ForestPlatform1/Detection" to="Platforms/ForestPlatform1" method="_on_detect_area_body_entered"]
 [connection signal="animation_finished" from="Platforms/ForestPlatform1/AnimationPlayer" to="Platforms/ForestPlatform1" method="_on_animation_player_animation_finished"]
