@@ -19,7 +19,7 @@ func execute_current_interaction():
 	match current_interaction.type:
 		'text':
 			# Please refactor the below
-			current_interaction.get_node('TextLabel').text = current_interaction.value
+			current_interaction.get_node('TextContainer/TextLabel').text = current_interaction.value
 
 			current_interaction_executed = true
 			update_interact_label()

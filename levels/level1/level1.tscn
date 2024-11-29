@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ddwvd7k4mccxu" path="res://player/player.tscn" id="2_j6ok6"]
 [ext_resource type="PackedScene" uid="uid://ds51rb302ldjx" path="res://enemies/tentaclime/tentaclime.tscn" id="3_b7r44"]
 [ext_resource type="Texture2D" uid="uid://dtod7a1oyqafw" path="res://assets/tilesets/Decoratives.png" id="8_ue3t0"]
-[ext_resource type="Theme" uid="uid://c5y1ghgoypah4" path="res://ui/theme.tres" id="13_6k5ar"]
+[ext_resource type="Theme" uid="uid://c5y1ghgoypah4" path="res://ui/theme.tres" id="13_bwxcs"]
 [ext_resource type="PackedScene" uid="uid://bvn5s1emeowj4" path="res://platforms/forest/forest_platform.tscn" id="15_14udd"]
 [ext_resource type="Texture2D" uid="uid://0e1v37mlmyju" path="res://assets/background/background day 1.png" id="15_nniu5"]
 [ext_resource type="Texture2D" uid="uid://3dt2n7o1sq8j" path="res://assets/tilesets/MainLevBuild.png" id="15_q60ux"]
@@ -6820,15 +6820,29 @@ scale = Vector2(0.29353, 0.422326)
 id = "mysterious_pillar"
 label = "Inspect"
 type = "text"
-value = "The mysterious pillar reads: SCUM FUCK FLOWER BOY!"
+value = "The ancient pillar reads \"let the slimes b...\" ... it becomes indecipherable."
 
-[node name="TextLabel" type="Label" parent="Interacts/MysteriousPillar"]
-offset_left = -100.0
-offset_top = -150.0
-offset_right = 100.0
+[node name="TextContainer" type="MarginContainer" parent="Interacts/MysteriousPillar"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
 offset_bottom = -50.0
-theme = ExtResource("13_6k5ar")
-autowrap_mode = 2
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextLabel" type="Label" parent="Interacts/MysteriousPillar/TextContainer"]
+custom_minimum_size = Vector2(290, 40)
+layout_mode = 2
+theme = ExtResource("13_bwxcs")
+autowrap_mode = 1
 
 [connection signal="body_entered" from="Platforms/ForestPlatform1/Detection" to="Platforms/ForestPlatform1" method="_on_detect_area_body_entered"]
 [connection signal="animation_finished" from="Platforms/ForestPlatform1/AnimationPlayer" to="Platforms/ForestPlatform1" method="_on_animation_player_animation_finished"]
