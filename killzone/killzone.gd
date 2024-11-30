@@ -13,4 +13,5 @@ func _on_body_entered(body: Node2D):
 
 func _on_timer_timeout():
 	EntityManager.reset()
+	InteractManager.reset()
 	get_tree().reload_current_scene()

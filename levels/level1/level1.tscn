@@ -6850,7 +6850,7 @@ position = Vector2(747, 542)
 scale = Vector2(0.29353, 0.422326)
 duration = 5
 id = "mysterious_pillar2"
-label = "Inspect"
+label = "Speak"
 type = "text"
 value = "2!!!"
 
@@ -6881,7 +6881,7 @@ position = Vector2(726, 542)
 scale = Vector2(0.29353, 0.422326)
 duration = 5
 id = "mysterious_pillar3"
-label = "Inspect"
+label = "Fuck"
 type = "text"
 value = "3!!!"
 
