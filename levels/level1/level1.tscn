@@ -6817,6 +6817,7 @@ shape = SubResource("WorldBoundaryShape2D_e5uyq")
 [node name="MysteriousPillar" parent="Interacts" instance=ExtResource("17_8rlli")]
 position = Vector2(768, 542)
 scale = Vector2(0.29353, 0.422326)
+duration = 5
 id = "mysterious_pillar"
 label = "Inspect"
 type = "text"
@@ -6839,6 +6840,68 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="TextLabel" type="Label" parent="Interacts/MysteriousPillar/TextContainer"]
+custom_minimum_size = Vector2(290, 40)
+layout_mode = 2
+theme = ExtResource("13_bwxcs")
+autowrap_mode = 1
+
+[node name="MysteriousPillar2" parent="Interacts" instance=ExtResource("17_8rlli")]
+position = Vector2(747, 542)
+scale = Vector2(0.29353, 0.422326)
+duration = 5
+id = "mysterious_pillar2"
+label = "Inspect"
+type = "text"
+value = "2!!!"
+
+[node name="TextContainer" type="MarginContainer" parent="Interacts/MysteriousPillar2"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextLabel" type="Label" parent="Interacts/MysteriousPillar2/TextContainer"]
+custom_minimum_size = Vector2(290, 40)
+layout_mode = 2
+theme = ExtResource("13_bwxcs")
+autowrap_mode = 1
+
+[node name="MysteriousPillar3" parent="Interacts" instance=ExtResource("17_8rlli")]
+position = Vector2(726, 542)
+scale = Vector2(0.29353, 0.422326)
+duration = 5
+id = "mysterious_pillar3"
+label = "Inspect"
+type = "text"
+value = "3!!!"
+
+[node name="TextContainer" type="MarginContainer" parent="Interacts/MysteriousPillar3"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextLabel" type="Label" parent="Interacts/MysteriousPillar3/TextContainer"]
 custom_minimum_size = Vector2(290, 40)
 layout_mode = 2
 theme = ExtResource("13_bwxcs")
