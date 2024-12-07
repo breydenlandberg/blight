@@ -53,34 +53,36 @@ func execute_current_interaction():
 
 			await get_tree().create_timer(current_interaction_temp.duration).timeout
 
-			# This function will keep running even after we die!!! I.e. free the previous scene nodes from memory!!!
-
-			executed_interactions.remove_at(executed_interactions.find(current_interaction_temp))
-
-			print('executed_interactions: ', executed_interactions)
+			print('Finished interaction: ', current_interaction_temp)
 			print('\n')
 
-			match current_interaction_temp.type:
-				'text':
-					current_interaction_temp.get_node('TextContainer/TextLabel').text = ''
+			if is_instance_valid(current_interaction_temp):
+				executed_interactions.remove_at(executed_interactions.find(current_interaction_temp))
 
-			if current_interaction and interactions:
-				var first_not_executed_i: int
-				for i in interactions.size():
-					if not executed_interactions.has(interactions[i]):
-						first_not_executed_i = i
-						break
-
-				print('Current interaction ', current_interaction_temp, ' finished, switching current_interaction to : ', interactions[first_not_executed_i])
+				print('executed_interactions: ', executed_interactions)
 				print('\n')
 
-				current_interaction = interactions[first_not_executed_i]
-				update_interact_label()
+				match current_interaction_temp.type:
+					'text':
+						current_interaction_temp.get_node('TextContainer/TextLabel').text = ''
 
-			print('InteractManager.execute_current_interaction() after ', current_interaction_temp.duration, 's timeout')
-			print('interactions: ', interactions)
-			print('current_interaction: ', current_interaction)
-			print('\n')
+				if current_interaction and interactions:
+					var first_not_executed_i: int
+					for i in interactions.size():
+						if not executed_interactions.has(interactions[i]):
+							first_not_executed_i = i
+							break
+
+					print('Switching current_interaction to: ', interactions[first_not_executed_i])
+					print('\n')
+
+					current_interaction = interactions[first_not_executed_i]
+					update_interact_label()
+
+				print('InteractManager.execute_current_interaction() after ', current_interaction_temp.duration, 's timeout')
+				print('interactions: ', interactions)
+				print('current_interaction: ', current_interaction)
+				print('\n')
 	else:
 		print('No current interaction')
 
@@ -99,10 +101,24 @@ func reset():
 	interactions.clear()
 	interact_label = null
 	player = null
+	print('reset()')
+	print('current_interaction: ', current_interaction)
+	print('executed_interactions: ', executed_interactions)
+	print('interactions: ', interactions)
+	print('interact_label: ', interact_label)
+	print('player: ', player)
+	print('\n')
 
 func set_player(player_param: CharacterBody2D):
 	player = player_param
 	interact_label = player.get_node('Interact/InteractLabel')
+	print('set_player()')
+	print('current_interaction: ', current_interaction)
+	print('executed_interactions: ', executed_interactions)
+	print('interactions: ', interactions)
+	print('interact_label: ', interact_label)
+	print('player: ', player)
+	print('\n')
 
 func update_interact_label():
 	if current_interaction and not executed_interactions.has(current_interaction):
