@@ -85,6 +85,7 @@ func execute_current_interaction():
 				print('\n')
 	else:
 		print('No current interaction')
+		print('\n')
 
 func push_front(interaction: Interaction):
 	interactions.push_front(interaction)
@@ -101,6 +102,7 @@ func reset():
 	interactions.clear()
 	interact_label = null
 	player = null
+
 	print('reset()')
 	print('current_interaction: ', current_interaction)
 	print('executed_interactions: ', executed_interactions)
@@ -112,6 +114,7 @@ func reset():
 func set_player(player_param: CharacterBody2D):
 	player = player_param
 	interact_label = player.get_node('Interact/InteractLabel')
+
 	print('set_player()')
 	print('current_interaction: ', current_interaction)
 	print('executed_interactions: ', executed_interactions)

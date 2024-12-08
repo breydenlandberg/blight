@@ -14,12 +14,14 @@ func enter():
 	tentaclime = entity
 
 	print('Entering Tentaclime Attack State!')
+	print('\n')
 
 	tentaclime.speed = tentaclime.base_speed * 2
 	animation.play('run')
 
 func exit():
 	print('Exiting Tentaclime Attack State!')
+	print('\n')
 
 	tentaclime.speed = tentaclime.base_speed
 
@@ -32,9 +34,6 @@ func state_physics_process(delta):
 func target_player(delta: float):
 	player_position = tentaclime.player.position
 	target_position = (player_position - tentaclime.position).normalized()
-
-	print(player_position)
-	print(target_position)
 
 	if tentaclime.position.distance_to(player_position) > 3:
 		tentaclime.position += target_position * tentaclime.speed * delta
