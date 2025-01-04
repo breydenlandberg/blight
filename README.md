@@ -19,7 +19,6 @@ https://colorkit.co/color/c1ffdc/
 
 TODO:
 Look into replacing strings with enums.
-If enemy (Tentaclime) changes state while in take_damage animation, the animation won't complete. Actually, taking damage fucks up the animations. Pls fix.
 INTERACTS STILL BUGGY!!! Or is it?
 
 
