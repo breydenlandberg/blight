@@ -21,3 +21,7 @@ TODO:
 Look into replacing strings with enums.
 If enemy (Tentaclime) changes state while in take_damage animation, the animation won't complete. Actually, taking damage fucks up the animations. Pls fix.
 INTERACTS STILL BUGGY!!! Or is it?
+
+
+GOOD TO KNOW:
+Control movement with direction: -1, 0, 1, and modulate speed as desired. Don't control speed directly to stop/start movement e.g. setting speed to 0.

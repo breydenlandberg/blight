@@ -17,23 +17,29 @@ var tentaclime: CharacterBody2D
 func enter():
 	tentaclime = entity
 
-	print('Entering Tentaclime Attack State!')
-	print('\n')
+	#print('Entering ', tentaclime.name, ' Attack State!')
+	#print('\n')
 
 	tentaclime.speed = tentaclime.base_speed * 2
-	animation.play('run')
 
 func exit():
-	print('Exiting Tentaclime Attack State!')
-	print('\n')
+	#print('Exiting ', tentaclime.name, ' Attack State!')
+	#print('\n')
 
 	tentaclime.speed = tentaclime.base_speed
 
 func state_physics_process(delta):
-	if ray_cast_left_down.is_colliding() and ray_cast_right_down.is_colliding():
-		target_player(delta)
-	else:
-		animation.play('idle')
+	#print('player_position', player_position)
+	#print('target_position', target_position)
+	#print('\n')
+
+	if not animation.current_animation == 'take_damage':
+		if tentaclime.velocity.is_zero_approx():
+			animation.play('idle')
+		else:
+			animation.play('run')
+
+	target_player(delta)
 
 	handle_sprite_flip()
 
@@ -41,19 +47,32 @@ func state_physics_process(delta):
 #
 # Helper functions
 func handle_sprite_flip():
-	print('player_position', player_position)
-	print('target_position', target_position)
-	print('\n')
-
 	if target_position.x < 0:
 		sprite.flip_h = true
 	else:
 		sprite.flip_h = false
 
 func target_player(delta: float):
-	if ray_cast_left_down.is_colliding() and ray_cast_right_down.is_colliding():
-		player_position = tentaclime.player.position
-		target_position = (player_position - tentaclime.position).normalized()
+	player_position = tentaclime.player.position
+	target_position = (player_position - tentaclime.position).normalized()
 
-		if tentaclime.position.distance_to(player_position) > 3:
-			tentaclime.position += target_position * tentaclime.speed * delta
+	if ray_cast_left_down.is_colliding() and ray_cast_right_down.is_colliding():
+		if tentaclime.position.distance_to(player_position) > 21:
+			if target_position.x < 0:
+				tentaclime.direction = -1
+			else:
+				tentaclime.direction = 1
+		else:
+			tentaclime.direction = 0
+
+	elif not ray_cast_left_down.is_colliding() and ray_cast_right_down.is_colliding():
+		if tentaclime.position.distance_to(player_position) > 21 and target_position.x > 0:
+			tentaclime.direction = 1
+		else:
+			tentaclime.direction = 0
+
+	elif ray_cast_left_down.is_colliding() and not ray_cast_right_down.is_colliding():
+		if tentaclime.position.distance_to(player_position) > 21 and target_position.x < 0:
+			tentaclime.direction = -1
+		else:
+			tentaclime.direction = 0

@@ -58,4 +58,5 @@ func _on_player_detection_area_body_entered(body: Node2D):
 	state_machine.transition(state_machine.current_state, 'attack')
 
 func _on_player_detection_area_body_exited(body: Node2D):
-	state_machine.transition(state_machine.current_state, 'idle')
+	if not state_machine.current_state.name.to_lower() == 'die':
+		state_machine.transition(state_machine.current_state, 'idle')

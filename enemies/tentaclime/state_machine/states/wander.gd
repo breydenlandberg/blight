@@ -12,6 +12,7 @@ var tentaclime: CharacterBody2D
 @onready var ray_cast_left: RayCast2D = $"../../RayCastLeft"
 @onready var ray_cast_right_down: RayCast2D = $"../../RayCastRightDown"
 @onready var ray_cast_left_down: RayCast2D = $"../../RayCastLeftDown"
+@onready var timer: Timer = $"../../WanderTimer"
 
 
 # ====================================================================================================
@@ -35,13 +36,18 @@ func enter():
 	#print(tentaclime.name, ' is wandering to the ', 'left' if tentaclime.direction == -1 else 'right', ' for ', wander_length, ' seconds')
 	#print('\n')
 
-	await get_tree().create_timer(wander_length).timeout
-
-	_transition.emit(self, 'idle')
+	timer.start(wander_length)
 
 func exit():
 	tentaclime.direction = 0
+	timer.stop()
 
 func state_physics_process(delta):
 	if (tentaclime.direction == 1 and not ray_cast_right_down.is_colliding()) or (tentaclime.direction == -1 and not ray_cast_left_down.is_colliding()):
 		tentaclime.direction *= -1
+
+# ====================================================================================================
+#
+# Signal functions
+func _on_wander_timer_timeout() -> void:
+	_transition.emit(self, 'idle')
