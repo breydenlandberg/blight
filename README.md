@@ -18,9 +18,10 @@ https://colorkit.co/color/c1ffdc/
 
 
 TODO:
-Look into replacing strings with enums.
-INTERACTS STILL BUGGY!!! Or is it?
+- Look into replacing strings with enums.
+- Sometimes Tentaclime will "not die" and still exist after being killed? Why!?
+- INTERACTS STILL BUGGY!!! Or is it?
 
 
 GOOD TO KNOW:
-Control movement with direction: -1, 0, 1, and modulate speed as desired. Don't control speed directly to stop/start movement e.g. setting speed to 0.
+- Control movement with direction: -1, 0, 1, and modulate speed as desired. Don't control speed directly to stop/start movement e.g. setting speed to 0.
